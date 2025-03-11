@@ -186,15 +186,27 @@ def select_sort_algorithm(algo_opt):
         algo_msg = "Seleccionó la configuración - Selection Sort"
 
     # opcion 2: Insertion Sort
+    elif algo_opt == 2:
+        sort_algorithm = 2
+        algo_msg = "Seleccionó la configuración - Insertion Sort"
     # TODO: completar la opcion de Insertion Sort
 
     # opcion 3: Shell Sort
+    elif algo_opt == 3:
+        sort_algorithm = 3
+        algo_msg = "Seleccionó la configuración - Shell Sort"
     # TODO: completar la opcion de Shell Sort
 
     # opcion 4: Merge Sort
+    elif algo_opt == 4:
+        sort_algorithm = 4
+        algo_msg = "Seleccionó la configuración - Merge Sort"
     # TODO: completar la opcion de Merge Sort
 
     # opcion 5: Quick Sort
+    elif algo_opt == 5:
+        sort_algorithm = 5
+        algo_msg = "Seleccionó la configuración - Quick Sort"
     # TODO: completar la opcion de Quick Sort
 
     else:
