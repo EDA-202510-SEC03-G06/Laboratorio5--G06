@@ -96,6 +96,7 @@ def iterator(lst):
    
     return [element for element in lst]
 
+
 def selection_sort(my_list, sort_crit):
     
     if my_list["size"] < 2:

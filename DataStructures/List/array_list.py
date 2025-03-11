@@ -72,17 +72,6 @@ def iterator(lst):
    
     return [element for element in lst] 
 
-def selection_sort(my_list, sort_crit):
-    n = my_list["size"]
-    elements = my_list["elements"]
-    
-    for i in range(n - 1):
-        min_index = i
-        for j in range(i + 1, n):
-            if sort_crit(elements[j], elements[min_index]):
-                min_index = j
-                elements[i], elements[min_index] = elements[min_index], elements[i]
-    return my_list
 
 def selection_sort(my_list, sort_crit):
     
