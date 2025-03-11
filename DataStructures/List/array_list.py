@@ -71,3 +71,35 @@ def sub_list(my_list, pos_i, num_elements):
 def iterator(lst):
    
     return [element for element in lst] 
+
+
+def selection_sort(my_list, sort_crit):
+    
+    n = my_list["size"]
+    elements = my_list["elements"]
+
+    for i in range(n - 1):
+        min_index = i
+        for j in range(i + 1, n):
+            if sort_crit(elements[j], elements[min_index]):
+                min_index = j
+                
+        elements[i], elements[min_index] = elements[min_index], elements[i]
+
+    return my_list
+
+def insertion_sort(my_list, sort_crit):
+    
+    for i in range(1, my_list['size']):
+        current_value = my_list['elements'][i]
+        position = i
+        
+        
+        while position > 0 and sort_crit(current_value, my_list['elements'][position - 1]):
+            my_list['elements'][position] = my_list['elements'][position - 1]
+            position -= 1
+        
+       
+        my_list['elements'][position] = current_value
+    
+    return my_list

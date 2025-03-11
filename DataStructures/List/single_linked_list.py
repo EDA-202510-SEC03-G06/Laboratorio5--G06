@@ -94,4 +94,57 @@ def sub_list(my_list, pos_i, num_elements):
 
 def iterator(lst):
    
-    return [element for element in lst] 
+    return [element for element in lst]
+
+def selection_sort(my_list, sort_crit):
+    
+    if my_list["size"] < 2:
+        return my_list  
+
+    current = my_list["first"]
+
+    while current is not None:
+        min_node = current
+        next_node = current["next"]
+
+        while next_node is not None:
+            if sort_crit(next_node["info"], min_node["info"]):
+                min_node = next_node
+            next_node = next_node["next"]
+
+        current["info"], min_node["info"] = min_node["info"], current["info"]
+
+        current = current["next"]
+
+    return my_list
+
+
+def insertion_sort(my_list, sort_crit):
+    
+    if my_list["size"] < 2:
+        return my_list  
+
+    sorted_list = {"size": 0, "first": None}
+
+    current = my_list["first"]
+
+    while current is not None:
+        new_node = {"info": current["info"], "next": None}
+
+        if sorted_list["first"] is None or sort_crit(new_node["info"], sorted_list["first"]["info"]):
+            new_node["next"] = sorted_list["first"]
+            sorted_list["first"] = new_node
+        else:
+            prev = sorted_list["first"]
+            while prev["next"] is not None and not sort_crit(new_node["info"], prev["next"]["info"]):
+                prev = prev["next"]
+
+            new_node["next"] = prev["next"]
+            prev["next"] = new_node
+
+        sorted_list["size"] += 1
+        current = current["next"]
+
+    return sorted_list
+
+
