@@ -90,20 +90,16 @@ def selection_sort(my_list, sort_crit):
 
 def insertion_sort(my_list, sort_crit):
     
-    n = my_list["size"]
-    elements = my_list["elements"]
-
-    for i in range(1, n):
-        key = elements[i]
-        j = i - 1
-
-        while j >= 0 and not sort_crit(elements[j], key):
-            elements[j + 1] = elements[j]
-            j -= 1
-
-        elements[j + 1] = key
-
+    for i in range(1, my_list['size']):
+        current_value = my_list['elements'][i]
+        position = i
+        
+        
+        while position > 0 and sort_crit(current_value, my_list['elements'][position - 1]):
+            my_list['elements'][position] = my_list['elements'][position - 1]
+            position -= 1
+        
+       
+        my_list['elements'][position] = current_value
+    
     return my_list
-
-
-
