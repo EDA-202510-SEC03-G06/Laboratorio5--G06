@@ -30,6 +30,9 @@ import os
 import time
 from DataStructures.List import array_list as al
 from DataStructures.List import single_linked_list as lt
+from DataStructures.List.array_list import selection_sort, insertion_sort, shellSort, mergeSort, quickSort
+
+
 
 data_dir = os.path.dirname(os.path.realpath('__file__')) + '/Data/GoodReads'
 
@@ -183,30 +186,30 @@ def select_sort_algorithm(algo_opt):
 
     # opcion 1: Selection Sort
     if algo_opt == 1:
-        sort_algorithm = sorting.selection_sort
+        sort_algorithm = selection_sort
         algo_msg = "Seleccionó la configuración - Selection Sort"
 
     # opcion 2: Insertion Sort
     elif algo_opt == 2:
-        sort_algorithm = sorting.insertion_sort
+        sort_algorithm = insertion_sort
         algo_msg = "Seleccionó la configuración - Insertion Sort"
     # TODO: completar la opcion de Insertion Sort
 
     # opcion 3: Shell Sort
     elif algo_opt == 3:
-        sort_algorithm = sorting.shell_sort
+        sort_algorithm = shell_sort
         algo_msg = "Seleccionó la configuración - Shell Sort"
     # TODO: completar la opcion de Shell Sort
 
     # opcion 4: Merge Sort
     elif algo_opt == 4:
-        sort_algorithm = sorting.merge_sort
+        sort_algorithm = merge_sort
         algo_msg = "Seleccionó la configuración - Merge Sort"
     # TODO: completar la opcion de Merge Sort
 
     # opcion 5: Quick Sort
     elif algo_opt == 5:
-        sort_algorithm = sorting.quick_sort
+        sort_algorithm = quick_sort
         algo_msg = "Seleccionó la configuración - Quick Sort"
     # TODO: completar la opcion de Quick Sort
 
