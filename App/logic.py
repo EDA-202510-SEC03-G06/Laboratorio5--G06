@@ -112,7 +112,7 @@ def load_books_tags(catalog):
     """
     Carga la información que asocia tags con libros.
     """
-    bookstagsfile = "ruta/del/archivo/books_tags.csv"  # TODO: completar la ruta del archivo de BOOKS_TAGS
+    bookstagsfile = "Data/GoodReads/book_tags.csv"  # TODO: completar la ruta del archivo de BOOKS_TAGS
     with open(bookstagsfile, encoding='utf-8') as file:
         input_file = csv.DictReader(open(bookstagsfile, encoding='utf-8'))
     for booktag in input_file:
