@@ -103,3 +103,75 @@ def insertion_sort(my_list, sort_crit):
         my_list['elements'][position] = current_value
     
     return my_list
+
+def shellSort(my_list, sort_crit):
+    n = len(my_list)
+    gap = n//2
+    
+    while gap > 0:
+        for i in range(gap,n):
+            temp = my_list[i]
+            j = i
+            while j >= gap and sort_crit(temp, my_list[j-gap]) < 0:
+                my_list[j] = my_list[j -  gap]
+                j -= gap
+            my_list[j] = temp
+        gap //= 2
+    return my_list
+
+def merge(my_list, l, m, r, sort_crit):
+    elements = my_list["elements"]
+    n1 = m - l + 1
+    n2 = r - m
+    L = elements[l:m + 1]
+    R = elements[m + 1:r + 1]
+    i = 0     
+    j = 0     
+    k = l    
+
+    while i < n1 and j < n2:
+        if sort_crit(L[i], R[j]) < 0:
+            elements[k] = L[i]
+            i += 1
+        else:
+            elements[k] = R[j]
+            j += 1
+        k += 1
+    while i < n1:
+        elements[k] = L[i]
+        i += 1
+        k += 1
+    while j < n2:
+        elements[k] = R[j]
+        j += 1
+        k += 1
+    return my_list
+        
+def mergeSort(my_list, l, r, sort_crit):
+    
+    if l < r:
+        m = l+(r-l)//2
+        mergeSort(my_list, l, r, sort_crit)
+        mergeSort(my_list, m + 1, r, sort_crit)
+        merge(my_list, l, m, r, sort_crit)
+    return my_list
+
+def partition(my_list, low, high, sort_crit):
+    elements = my_list["elements"]
+    pivot = my_list[high]
+    i = low - 1
+    
+    for j in range(low, high):
+        if sort_crit(elements[j], pivot) < 0:
+            i += 1
+            elements[i],elements[j] = elements[j], elements[i]
+
+    elements[i + 1],elements[high] = elements[high], elements[i + 1]
+    return i + 1
+
+def quickSort(my_list, low, high, sort_crit):
+    if low < high:
+        pi = partition(my_list, low, high, sort_crit)
+        quickSort(my_list, low, pi - 1, sort_crit)
+        quickSort(my_list, pi + 1, high, sort_crit)
+    return my_list
