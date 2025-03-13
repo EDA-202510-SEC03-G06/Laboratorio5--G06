@@ -369,11 +369,11 @@ def sort_books(catalog, sort_algorithm):
 
     elif sort_algorithm == 4:
         # TODO: completar la llamada a merge_sort
-        pass
+        sorted_books_s = merge_sort(sorted_books)
 
     elif sort_algorithm == 5:
         # TODO: completar la llamada a quick_sort
-        pass
+        sorted_books_s = quick_sort(sorted_books)               
 
     end_time = get_time()
     delta = delta_time(start_time, end_time)
