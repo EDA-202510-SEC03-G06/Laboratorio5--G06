@@ -118,6 +118,12 @@ def selection_sort(my_list, sort_crit):
 
     return my_list
 
+def default_sort_criteria(element_1, element_2):
+
+    if isinstance(element_1, dict) and isinstance(element_2, dict):
+        return float(element_1.get("average_rating", 0)) < float(element_2.get("average_rating", 0))
+    return element_1 < element_2
+
 
 def insertion_sort(my_list, sort_crit):
     
