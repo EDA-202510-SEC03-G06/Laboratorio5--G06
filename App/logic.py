@@ -62,8 +62,8 @@ def new_logic(user_data_structure):
     # Usamos la estructura seleccionada para inicializar todas las listas
     catalog["books"] = data_structure.new_list()
     # TODO: completar la creacion de la lista de autores
-    catalog["authors"] = None
-    catalog["tags"] = None  # TODO: completar la creacion de la lista de tags
+    catalog["authors"] = data_structure.new_list()  
+    catalog["tags"] = data_structure.new_list()  # TODO: completar la creacion de la lista de tags
     catalog["book_tags"] = data_structure.new_list()
 
     return catalog
@@ -112,8 +112,9 @@ def load_books_tags(catalog):
     """
     Carga la información que asocia tags con libros.
     """
-    bookstagsfile = None  # TODO: completar la ruta del archivo de BOOKS_TAGS
-    input_file = csv.DictReader(open(bookstagsfile, encoding='utf-8'))
+    bookstagsfile = "ruta/del/archivo/books_tags.csv"  # TODO: completar la ruta del archivo de BOOKS_TAGS
+    with open(bookstagsfile, encoding='utf-8') as file:
+        input_file = csv.DictReader(open(bookstagsfile, encoding='utf-8'))
     for booktag in input_file:
         add_book_tag(catalog, booktag)
     return book_tag_size(catalog)
@@ -182,30 +183,30 @@ def select_sort_algorithm(algo_opt):
 
     # opcion 1: Selection Sort
     if algo_opt == 1:
-        sort_algorithm = 1
+        sort_algorithm = sorting.selection_sort
         algo_msg = "Seleccionó la configuración - Selection Sort"
 
     # opcion 2: Insertion Sort
     elif algo_opt == 2:
-        sort_algorithm = 2
+        sort_algorithm = sorting.insertion_sort
         algo_msg = "Seleccionó la configuración - Insertion Sort"
     # TODO: completar la opcion de Insertion Sort
 
     # opcion 3: Shell Sort
     elif algo_opt == 3:
-        sort_algorithm = 3
+        sort_algorithm = sorting.shell_sort
         algo_msg = "Seleccionó la configuración - Shell Sort"
     # TODO: completar la opcion de Shell Sort
 
     # opcion 4: Merge Sort
     elif algo_opt == 4:
-        sort_algorithm = 4
+        sort_algorithm = sorting.merge_sort
         algo_msg = "Seleccionó la configuración - Merge Sort"
     # TODO: completar la opcion de Merge Sort
 
     # opcion 5: Quick Sort
     elif algo_opt == 5:
-        sort_algorithm = 5
+        sort_algorithm = sorting.quick_sort
         algo_msg = "Seleccionó la configuración - Quick Sort"
     # TODO: completar la opcion de Quick Sort
 
@@ -288,21 +289,21 @@ def count_books_by_tag(catalog, tag_name):
 
 def book_size(catalog):
     # TODO: completar la funcion para obtener el tamaño de la lista de libros
-    return data_structure.size(catalog["books"])
+    return data_structure.size(catalog["books"]) if catalog["books"] else 0
 
 
 def author_size(catalog):
     # TODO: completar la funcion para obtener el tamaño de la lista de autores
-    return data_structure.size(catalog["authors"])
+    return data_structure.size(catalog["authors"]) if catalog["authors"] else 0
 
 
 def tag_size(catalog):
     # TODO: completar la funcion para obtener el tamaño de la lista de tags
-    return data_structure.size(catalog["tags"])
+    return data_structure.size(catalog["tags"]) if catalog["tags"] else 0
 
 
 def book_tag_size(catalog):
-    return data_structure.size(catalog["book_tags"])
+    return data_structure.size(catalog["book_tags"]) if catalog["book_tags"] else 0
 
 #  -------------------------------------------------------------
 # Funciones utilizadas para comparar elementos dentro de una lista
